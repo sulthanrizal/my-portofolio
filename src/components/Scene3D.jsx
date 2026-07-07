@@ -1,6 +1,6 @@
 import { Suspense, useMemo, useRef } from 'react'
 import * as THREE from 'three'
-import { Canvas, useFrame } from '@react-three/fiber'
+import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { Float, Sparkles } from '@react-three/drei'
 
 function lerp(a, b, t) {
@@ -129,7 +129,7 @@ function makeSymbolTexture(symbol, color) {
   return texture
 }
 
-function CodeWindow() {
+function CodeWindow({ position, scale = 1, tilt = -0.28 }) {
   const mesh = useRef()
   const texture = useMemo(() => makeCodeTexture(), [])
 
@@ -137,7 +137,7 @@ function CodeWindow() {
     if (!mesh.current) return
     mesh.current.rotation.y = lerp(
       mesh.current.rotation.y,
-      -0.28 + state.pointer.x * 0.25,
+      tilt + state.pointer.x * 0.25,
       0.04,
     )
     mesh.current.rotation.x = lerp(
@@ -145,18 +145,19 @@ function CodeWindow() {
       state.pointer.y * 0.2,
       0.04,
     )
-    mesh.current.position.y = 0.2 + Math.sin(state.clock.elapsedTime * 0.8) * 0.12
+    mesh.current.position.y =
+      position[1] + Math.sin(state.clock.elapsedTime * 0.8) * 0.12
   })
 
   return (
-    <mesh ref={mesh} position={[2.3, 0.2, -0.5]}>
+    <mesh ref={mesh} position={position} scale={scale}>
       <planeGeometry args={[3.1, 2.32]} />
       <meshBasicMaterial map={texture} transparent toneMapped={false} />
     </mesh>
   )
 }
 
-function WireShell() {
+function WireShell({ position, scale }) {
   const mesh = useRef()
 
   useFrame((_, delta) => {
@@ -166,7 +167,7 @@ function WireShell() {
   })
 
   return (
-    <mesh ref={mesh} scale={2.4} position={[2.6, 0.2, -0.8]}>
+    <mesh ref={mesh} scale={scale} position={position}>
       <icosahedronGeometry args={[1, 1]} />
       <meshBasicMaterial color="#22d3ee" wireframe transparent opacity={0.07} />
     </mesh>
@@ -186,36 +187,48 @@ function CodeSymbol({ symbol, color, position, scale, float }) {
   )
 }
 
-function CodeSymbols() {
+function SceneContent() {
+  const { width: vw, height: vh } = useThree((state) => state.viewport)
+  const compact = vw < 5.5
+
+  const winScale = compact ? Math.min(1, (vw * 0.94) / 3.1) : 1
+  const winPos = compact ? [0, vh * 0.22, -0.5] : [2.3, 0.2, -0.5]
+
+  const symbols = compact
+    ? [
+        { symbol: '</>', color: '#22d3ee', position: [-vw * 0.32, vh * 0.38, -1.5], scale: 0.7, float: { speed: 2.2, intensity: 1.4 } },
+        { symbol: '{ }', color: '#a78bfa', position: [vw * 0.34, -vh * 0.3, -1], scale: 0.55, float: { speed: 1.6, intensity: 1.2 } },
+        { symbol: '=>', color: '#f472b6', position: [vw * 0.3, vh * 0.44, -2.2], scale: 0.45, float: { speed: 2.8, intensity: 1.6 } },
+        { symbol: ';', color: '#86efac', position: [-vw * 0.28, -vh * 0.36, -2], scale: 0.4, float: { speed: 2, intensity: 1.4 } },
+      ]
+    : [
+        { symbol: '</>', color: '#22d3ee', position: [-4.2, 1.8, -1.5], scale: 1.1, float: { speed: 2.2, intensity: 2 } },
+        { symbol: '{ }', color: '#a78bfa', position: [4.4, -1.6, -1], scale: 0.9, float: { speed: 1.6, intensity: 1.6 } },
+        { symbol: '=>', color: '#f472b6', position: [3.4, 2.3, -2.2], scale: 0.7, float: { speed: 2.8, intensity: 2.4 } },
+        { symbol: ';', color: '#86efac', position: [-4.4, -2.2, -2], scale: 0.6, float: { speed: 2, intensity: 2.2 } },
+      ]
+
   return (
     <>
-      <CodeSymbol
-        symbol="</>"
-        color="#22d3ee"
-        position={[-4.2, 1.8, -1.5]}
-        scale={1.1}
-        float={{ speed: 2.2, intensity: 2 }}
+      <CodeWindow
+        position={winPos}
+        scale={winScale}
+        tilt={compact ? 0 : -0.28}
       />
-      <CodeSymbol
-        symbol="{ }"
-        color="#a78bfa"
-        position={[4.4, -1.6, -1]}
-        scale={0.9}
-        float={{ speed: 1.6, intensity: 1.6 }}
+      <WireShell
+        position={compact ? [0, 0.3, -0.9] : [2.6, 0.2, -0.8]}
+        scale={compact ? 1.5 : 2.4}
       />
-      <CodeSymbol
-        symbol="=>"
-        color="#f472b6"
-        position={[3.4, 2.3, -2.2]}
-        scale={0.7}
-        float={{ speed: 2.8, intensity: 2.4 }}
-      />
-      <CodeSymbol
-        symbol=";"
-        color="#86efac"
-        position={[-4.4, -2.2, -2]}
-        scale={0.6}
-        float={{ speed: 2, intensity: 2.2 }}
+      {symbols.map((s) => (
+        <CodeSymbol key={s.symbol} {...s} />
+      ))}
+      <Sparkles
+        count={90}
+        scale={compact ? 7 : 10}
+        size={2}
+        speed={0.35}
+        color="#a5b4fc"
+        opacity={0.5}
       />
     </>
   )
@@ -250,10 +263,7 @@ export default function Scene3D() {
       <pointLight position={[1, 5, -2]} intensity={1.6} decay={0} color="#f472b6" />
       <Suspense fallback={null}>
         <Rig>
-          <CodeWindow />
-          <WireShell />
-          <CodeSymbols />
-          <Sparkles count={90} scale={10} size={2} speed={0.35} color="#a5b4fc" opacity={0.5} />
+          <SceneContent />
         </Rig>
       </Suspense>
     </Canvas>
