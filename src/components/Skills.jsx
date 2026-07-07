@@ -27,7 +27,11 @@ export default function Skills() {
 
       <div className="skills__grid">
         {skills.map((s, i) => (
-          <Reveal key={s.group} delay={i * 0.08}>
+          <Reveal
+            key={s.group}
+            delay={i * 0.08}
+            direction={i % 2 === 0 ? 'left' : 'right'}
+          >
             <div className="card skills__card">
               <h3>{s.group}</h3>
               <ul className="chips">

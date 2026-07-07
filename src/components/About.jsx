@@ -13,7 +13,7 @@ export default function About() {
       </Reveal>
 
       <div className="about__grid">
-        <Reveal delay={0.1}>
+        <Reveal delay={0.1} direction="left">
           <div className="about__text">
             <p>{profile.summary}</p>
             <p>
@@ -26,7 +26,7 @@ export default function About() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.2}>
+        <Reveal delay={0.2} direction="right">
           <div className="about__edu">
             <h3>Education</h3>
             {education.map((e) => (

@@ -1,6 +1,13 @@
+import jobPortalImg from './assets/jobportal_togi.png'
+import sgaCakrawalaImg from './assets/sgaCakrawala.png'
+import cakFestImg from './assets/cakrawalafestival.png'
+import movieCatalogImg from './assets/movieCatalog.png'
+import ptAltindoImg from './assets/ptAltindo.png'
+import qurbanAsyikImg from './assets/qurbanAsyik.png'
+
 export const profile = {
   name: `Sulthan Rizal Halfa 'Ilmi`,
-  role: 'Front-End Developer',
+  role: 'Software Developer | Frontend Developer',
   tagline: 'Crafting interfaces that feel alive.',
   summary:
     'Fourth-semester Computer Science student at Universitas Cakrawala with hands-on experience building responsive landing pages, organizational websites, and functional applications. I care deeply about clean UI, smooth user experience, and interface optimization.',
@@ -84,6 +91,7 @@ export const projects = [
     description:
       'A comprehensive job portal web application built end-to-end from scratch — job listings, search, and application flows with a fully responsive UI.',
     tech: ['React.js', 'Tailwind CSS', 'Fetch API'],
+    image: jobPortalImg,
     hue: 262,
     links: [],
     badge: 'Internal',
@@ -94,6 +102,7 @@ export const projects = [
     description:
       'Official website of the Student Government Association — landing pages built and continuously improved with an 8-member team.',
     tech: ['React.js', 'TypeScript', 'Tailwind CSS', 'Vite'],
+    image: sgaCakrawalaImg,
     hue: 285,
     links: [{ label: 'Live Site', url: 'https://sga-cakrawala.org' }],
   },
@@ -103,6 +112,7 @@ export const projects = [
     description:
       "Event website for Universitas Cakrawala's flagship festival — promotional pages and event information.",
     tech: ['React.js', 'TypeScript', 'Tailwind CSS'],
+    image: cakFestImg,
     hue: 322,
     links: [{ label: 'Live Site', url: 'https://cakfest.sga-cakrawala.org' }],
   },
@@ -112,6 +122,7 @@ export const projects = [
     description:
       'A film catalog consuming the TMDB API — dynamic movie data, search, and detail pages.',
     tech: ['React.js', 'SCSS', 'Axios'],
+    image: movieCatalogImg,
     hue: 195,
     links: [
       { label: 'GitHub', url: 'https://github.com/sulthanrizal/Test_Project_Tmdb' },{
@@ -125,6 +136,7 @@ export const projects = [
     description:
       'Fully responsive company landing page with modular, reusable components ready for backend integration.',
     tech: ['React.js', 'SCSS', 'JavaScript'],
+    image: ptAltindoImg,
     hue: 210,
     links: [{ label: 'Live Site', url: 'https://altindomitraperkasa.com' }],
   },
@@ -134,6 +146,7 @@ export const projects = [
     description:
       'Mobile application for qurban services — UI design and core components, with API integration for main features.',
     tech: ['React Native'],
+    image: qurbanAsyikImg,
     hue: 155,
     links: [],
     badge: 'In Development',

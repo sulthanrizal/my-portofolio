@@ -13,7 +13,7 @@ export default function Experience() {
 
       <div className="timeline">
         {experience.map((job, i) => (
-          <Reveal key={job.company} delay={i * 0.08}>
+          <Reveal key={job.company} delay={i * 0.08} direction="left">
             <article className={`timeline__item ${job.current ? 'timeline__item--current' : ''}`}>
               <div className="timeline__marker" aria-hidden="true" />
               <div className="card timeline__card">
