@@ -1,4 +1,4 @@
-import { Suspense, useMemo, useRef } from 'react'
+import { Suspense, useEffect, useMemo, useRef, useState } from 'react'
 import * as THREE from 'three'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { Float, Sparkles } from '@react-three/drei'
@@ -247,10 +247,25 @@ function Rig({ children }) {
 }
 
 export default function Scene3D() {
+  const wrapper = useRef(null)
+  const [visible, setVisible] = useState(true)
+
+  useEffect(() => {
+    const el = wrapper.current
+    if (!el) return
+    const observer = new IntersectionObserver(([entry]) => {
+      setVisible(entry.isIntersecting)
+    })
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
   return (
+    <div ref={wrapper} style={{ width: '100%', height: '100%' }}>
     <Canvas
       camera={{ position: [0, 0, 6], fov: 45 }}
-      dpr={[1, 2]}
+      dpr={[1, 1.5]}
+      frameloop={visible ? 'always' : 'never'}
       gl={{ antialias: true, alpha: true }}
       style={{ pointerEvents: 'none' }}
       eventSource={typeof document !== 'undefined' ? document.body : undefined}
@@ -267,5 +282,6 @@ export default function Scene3D() {
         </Rig>
       </Suspense>
     </Canvas>
+    </div>
   )
 }

@@ -1,9 +1,9 @@
 import jobPortalImg from './assets/jobportal_togi.png'
-import sgaCakrawalaImg from './assets/sgaCakrawala.png'
-import cakFestImg from './assets/cakrawalafestival.png'
-import movieCatalogImg from './assets/movieCatalog.png'
-import ptAltindoImg from './assets/ptAltindo.png'
-import qurbanAsyikImg from './assets/qurbanAsyik.png'
+import sgaCakrawalaImg from './assets/sgaCakrawala.jpg'
+import cakFestImg from './assets/cakrawalafestival.jpg'
+import movieCatalogImg from './assets/movieCatalog.jpg'
+import ptAltindoImg from './assets/ptAltindo.jpg'
+import qurbanAsyikImg from './assets/qurbanAsyik.jpg'
 
 export const profile = {
   name: `Sulthan Rizal Halfa 'Ilmi`,
