@@ -1,51 +1,65 @@
-.lamp-fig [data-part='pull-knob'] {
+.nav-lamp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
   cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
 }
 
-.lamp-fig .iso-stage {
-  outline: none;
+.nav-lamp:hover {
+  border-color: var(--border-bright);
+  background: var(--surface-2);
+  transform: translateY(-1px);
 }
 
-.lamp-fig [data-part='bulb-glow'] {
+.nav-lamp:focus-visible {
+  outline: 2px solid var(--violet);
+  outline-offset: 2px;
+}
+
+.nav-lamp-svg {
+  width: 26px;
+  height: 26px;
+  overflow: visible;
+}
+
+.nav-lamp [data-part='bulb-glow'] {
   opacity: 0;
   fill: #ffb85c;
-  transition: opacity 0.45s ease;
+  transition: opacity 0.35s ease;
 }
 
-.lamp-fig[data-on='true'] [data-part='bulb-glow'] {
+.nav-lamp[data-on='true'] [data-part='bulb-glow'] {
   opacity: 0.85;
 }
 
-.lamp-fig [data-part='bulb'] .iso-top,
-.lamp-fig [data-part='bulb'] .iso-shade,
-.lamp-fig [data-part='bulb'] .iso-edge {
-  transition: fill 0.4s ease, stroke 0.4s ease;
+.nav-lamp [data-part='bulb'] .iso-top,
+.nav-lamp [data-part='bulb'] .iso-shade,
+.nav-lamp [data-part='bulb'] .iso-edge {
+  transition: fill 0.35s ease, stroke 0.35s ease;
 }
 
-.lamp-fig[data-on='true'] [data-part='bulb'] .iso-top {
+.nav-lamp[data-on='true'] [data-part='bulb'] .iso-top {
   fill: #ffd27a;
 }
-.lamp-fig[data-on='true'] [data-part='bulb'] .iso-shade[data-shade='0'] {
+.nav-lamp[data-on='true'] [data-part='bulb'] .iso-shade[data-shade='0'] {
   fill: #e87f0e;
 }
-.lamp-fig[data-on='true'] [data-part='bulb'] .iso-shade[data-shade='1'] {
+.nav-lamp[data-on='true'] [data-part='bulb'] .iso-shade[data-shade='1'] {
   fill: #f0982f;
 }
-.lamp-fig[data-on='true'] [data-part='bulb'] .iso-shade[data-shade='2'] {
+.nav-lamp[data-on='true'] [data-part='bulb'] .iso-shade[data-shade='2'] {
   fill: #f6ac4e;
 }
-.lamp-fig[data-on='true'] [data-part='bulb'] .iso-shade[data-shade='3'] {
+.nav-lamp[data-on='true'] [data-part='bulb'] .iso-shade[data-shade='3'] {
   fill: #ffc062;
 }
-.lamp-fig[data-on='true'] [data-part='bulb'] .iso-edge {
+.nav-lamp[data-on='true'] [data-part='bulb'] .iso-edge {
   stroke: #fff3d6;
-}
-
-.iso-wrap .iso-fill,
-.iso-wrap .iso-shade,
-.iso-wrap .iso-top,
-.iso-wrap .iso-line,
-.iso-wrap .iso-wire-end,
-.iso-wrap .iso-face-text {
-  transition: fill 0.4s ease, stroke 0.4s ease;
 }

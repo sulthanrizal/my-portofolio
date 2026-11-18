@@ -201,6 +201,12 @@
   background: var(--surface-2);
 }
 
+.nav__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .nav__cta {
   padding: 9px 16px;
   font-size: 13.5px;
@@ -448,15 +454,6 @@
   .about__grid {
     grid-template-columns: 1fr;
   }
-}
-
-.about__figure {
-  margin-top: 56px;
-  max-width: 560px;
-}
-
-.about__figure .iso-wrap {
-  display: block;
 }
 
 /* ---------- experience ---------- */

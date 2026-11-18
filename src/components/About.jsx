@@ -1,8 +1,5 @@
-import { lazy, Suspense } from 'react'
 import Reveal from './Reveal'
 import { profile, education } from '../data'
-
-const LampSwitch = lazy(() => import('./iso/LampSwitch'))
 
 export default function About() {
   return (
@@ -47,14 +44,6 @@ export default function About() {
           </div>
         </Reveal>
       </div>
-
-      <Reveal delay={0.1}>
-        <div className="about__figure">
-          <Suspense fallback={null}>
-            <LampSwitch />
-          </Suspense>
-        </div>
-      </Reveal>
     </section>
   )
 }

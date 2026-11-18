@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { profile } from '../data'
+import NavLamp from './iso/NavLamp'
 
 const links = [
   { label: 'About', href: '#about' },
@@ -32,15 +33,18 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
-        <a
-          className="btn btn--ghost nav__cta"
-          href={profile.github}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <GithubIcon />
-          GitHub
-        </a>
+        <div className="nav__actions">
+          <NavLamp />
+          <a
+            className="btn btn--ghost nav__cta"
+            href={profile.github}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <GithubIcon />
+            GitHub
+          </a>
+        </div>
       </nav>
     </header>
   )
