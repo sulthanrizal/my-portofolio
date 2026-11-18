@@ -151,7 +151,7 @@
 }
 
 .nav--scrolled {
-  background: rgba(6, 6, 14, 0.72);
+  background: color-mix(in srgb, var(--bg) 72%, transparent);
   backdrop-filter: blur(18px);
   border-bottom-color: var(--border);
 }
@@ -448,6 +448,15 @@
   .about__grid {
     grid-template-columns: 1fr;
   }
+}
+
+.about__figure {
+  margin-top: 56px;
+  max-width: 560px;
+}
+
+.about__figure .iso-wrap {
+  display: block;
 }
 
 /* ---------- experience ---------- */
@@ -910,4 +919,22 @@
   .modal__title {
     font-size: 22px;
   }
+}
+
+/* ---------- light theme contrast patches ---------- */
+:root[data-theme='light'] .pill--live {
+  color: #047857;
+  border-color: rgba(4, 120, 87, 0.3);
+  background: rgba(4, 120, 87, 0.08);
+}
+
+:root[data-theme='light'] .chip {
+  color: #6d28d9;
+  background: rgba(124, 58, 237, 0.08);
+  border-color: rgba(124, 58, 237, 0.22);
+}
+
+:root[data-theme='light'] ::selection {
+  background: rgba(124, 58, 237, 0.25);
+  color: #121225;
 }

@@ -1,0 +1,51 @@
+.lamp-fig [data-part='pull-knob'] {
+  cursor: pointer;
+}
+
+.lamp-fig .iso-stage {
+  outline: none;
+}
+
+.lamp-fig [data-part='bulb-glow'] {
+  opacity: 0;
+  fill: #ffb85c;
+  transition: opacity 0.45s ease;
+}
+
+.lamp-fig[data-on='true'] [data-part='bulb-glow'] {
+  opacity: 0.85;
+}
+
+.lamp-fig [data-part='bulb'] .iso-top,
+.lamp-fig [data-part='bulb'] .iso-shade,
+.lamp-fig [data-part='bulb'] .iso-edge {
+  transition: fill 0.4s ease, stroke 0.4s ease;
+}
+
+.lamp-fig[data-on='true'] [data-part='bulb'] .iso-top {
+  fill: #ffd27a;
+}
+.lamp-fig[data-on='true'] [data-part='bulb'] .iso-shade[data-shade='0'] {
+  fill: #e87f0e;
+}
+.lamp-fig[data-on='true'] [data-part='bulb'] .iso-shade[data-shade='1'] {
+  fill: #f0982f;
+}
+.lamp-fig[data-on='true'] [data-part='bulb'] .iso-shade[data-shade='2'] {
+  fill: #f6ac4e;
+}
+.lamp-fig[data-on='true'] [data-part='bulb'] .iso-shade[data-shade='3'] {
+  fill: #ffc062;
+}
+.lamp-fig[data-on='true'] [data-part='bulb'] .iso-edge {
+  stroke: #fff3d6;
+}
+
+.iso-wrap .iso-fill,
+.iso-wrap .iso-shade,
+.iso-wrap .iso-top,
+.iso-wrap .iso-line,
+.iso-wrap .iso-wire-end,
+.iso-wrap .iso-face-text {
+  transition: fill 0.4s ease, stroke 0.4s ease;
+}
