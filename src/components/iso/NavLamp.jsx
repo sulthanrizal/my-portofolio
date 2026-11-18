@@ -4,9 +4,9 @@ import { useTheme } from '../../ThemeContext'
 import './iso.css'
 import './lamp.css'
 
-const CHAIN_FROM = [66.12, 46.52]
-const KNOB_REST = [70.32, 87.53]
-const MAX_PULL = 19.47
+const CHAIN_FROM = [72.26, 38.62]
+const KNOB_REST = [92.53, 88.93]
+const MAX_PULL = 16.39
 const DRAG_PX_FOR_FULL_PULL = 26
 const PULL_THRESHOLD = 0.5
 const JITTER_PX = 3
