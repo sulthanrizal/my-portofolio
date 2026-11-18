@@ -1,0 +1,101 @@
+.hanging-lamp {
+  position: fixed;
+  top: 68px;
+  right: 18px;
+  z-index: 60;
+  width: 50px;
+  pointer-events: none;
+}
+
+.hanging-lamp-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  pointer-events: none;
+  outline: none;
+}
+
+.hanging-lamp-svg:focus-visible [data-part='bulb-globe'] {
+  stroke: var(--violet);
+  stroke-width: 2.5;
+}
+
+.lamp-mount {
+  fill: var(--text-dim);
+}
+
+.lamp-cord {
+  fill: none;
+  stroke: #c9b48f;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 0.1 7.5;
+  pointer-events: auto;
+}
+
+.lamp-cap {
+  fill: #6b6b76;
+  pointer-events: auto;
+}
+
+.lamp-cap-ridge {
+  stroke: #4b4b55;
+  stroke-width: 1.4;
+}
+
+.lamp-globe {
+  fill: #8f8d86;
+  transition: fill 0.4s ease;
+  pointer-events: auto;
+  cursor: grab;
+}
+
+.lamp-filament {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.55);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+
+.lamp-button-ring {
+  fill: none;
+  stroke: #4b4b55;
+  stroke-width: 1.5;
+}
+
+.lamp-button-dot {
+  fill: #2a2a2e;
+}
+
+.lamp-glow {
+  fill: #ffb85c;
+  opacity: 0;
+  filter: blur(14px);
+  transition: opacity 0.45s ease;
+}
+
+.hanging-lamp[data-on='true'] .lamp-glow {
+  opacity: 0.85;
+}
+
+.hanging-lamp[data-on='true'] .lamp-globe {
+  fill: #ffd27a;
+}
+
+[data-part='bulb-hit'] {
+  pointer-events: all;
+  cursor: grab;
+  touch-action: none;
+}
+
+[data-part='bulb-hit']:active {
+  cursor: grabbing;
+}
+
+@media (max-width: 640px) {
+  .hanging-lamp {
+    right: 18px;
+    width: 42px;
+  }
+}
