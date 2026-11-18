@@ -2,13 +2,14 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   padding: 0;
   border-radius: 10px;
   border: 1px solid var(--border);
   background: var(--surface);
   cursor: pointer;
+  overflow: visible;
   transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
 }
 
@@ -24,9 +25,18 @@
 }
 
 .nav-lamp-svg {
-  width: 26px;
-  height: 26px;
+  width: 28px;
+  height: 30.5px;
   overflow: visible;
+}
+
+.nav-lamp [data-part='pull-knob'] {
+  cursor: grab;
+  touch-action: none;
+}
+
+.nav-lamp [data-part='pull-knob']:active {
+  cursor: grabbing;
 }
 
 .nav-lamp [data-part='bulb-glow'] {
