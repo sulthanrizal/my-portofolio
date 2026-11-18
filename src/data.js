@@ -93,8 +93,7 @@ export const projects = [
     tech: ['React.js', 'Tailwind CSS', 'Fetch API'],
     image: jobPortalImg,
     hue: 262,
-    links: [],
-    badge: 'Internal',
+    links: [{ label: 'Live Site', url: 'https://lensahire.com/' }],
   },
   {
     title: 'SGA Cakrawala',
@@ -138,18 +137,17 @@ export const projects = [
     tech: ['React.js', 'SCSS', 'JavaScript'],
     image: ptAltindoImg,
     hue: 210,
-    links: [{ label: 'Live Site', url: 'https://altindomitraperkasa.com' }],
+    links: [{ label: 'Live Site', url: 'https://pt-altindo-mitra-perkasa.vercel.app/' }],
   },
   {
     title: 'Qurban-Asiq App',
     context: 'Mobile App',
     description:
-      'Mobile application for qurban services — UI design and core components, with API integration for main features.',
+      'Mobile application for qurban services — UI design and core components, with API integration for main features. Live on iOS; Android is coming soon.',
     tech: ['React Native'],
     image: qurbanAsyikImg,
     hue: 155,
-    links: [],
-    badge: 'In Development',
+    links: [{ label: 'App Store', url: 'https://apps.apple.com/id/app/qurban-asyik/id6753735706?l=id' }],
   },
 ]
 
