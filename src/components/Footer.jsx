@@ -1,21 +1,23 @@
 import Reveal from './Reveal'
 import { profile } from '../data'
+import { useLanguage } from '../LanguageContext'
 import { GithubIcon } from './Navbar'
 
 export default function Footer() {
+  const { t } = useLanguage()
+
   return (
     <footer className="footer" id="contact">
       <div className="footer__glow" aria-hidden="true" />
       <Reveal>
-        <p className="section__eyebrow">05 — Contact</p>
+        <p className="section__eyebrow">{t('footer.eyebrow')}</p>
         <h2 className="footer__title">
-          Let&apos;s build something
+          {t('footer.titlePre')}
           <br />
-          <span className="grad-text">together</span>.
+          <span className="grad-text">{t('footer.titleEmph')}</span>
+          {t('footer.titlePost')}
         </h2>
-        <p className="footer__sub">
-          Open for internship & freelance opportunities — or just say hi.
-        </p>
+        <p className="footer__sub">{t('footer.sub')}</p>
         <div className="footer__actions">
           <a
             className="btn btn--primary"
@@ -32,7 +34,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Download CV
+            {t('footer.downloadCV')}
           </a>
         </div>
       </Reveal>
@@ -42,7 +44,7 @@ export default function Footer() {
           © {new Date().getFullYear()} {profile.name}
         </span>
         <span>{profile.location}</span>
-        <span>Built with React, Three.js & ☕</span>
+        <span>{t('footer.builtWith')}</span>
       </div>
     </footer>
   )

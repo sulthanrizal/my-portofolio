@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { useTheme } from '../ThemeContext'
+import { useLanguage } from '../LanguageContext'
 import './HangingLamp.css'
 
 const MOUNT = [60, 8]
@@ -16,6 +17,7 @@ export default function HangingLamp() {
   const draggedGestureRef = useRef(false)
   const rafRef = useRef(0)
   const { theme, toggleTheme } = useTheme()
+  const { t } = useLanguage()
   const on = theme === 'light'
 
   useEffect(() => {
@@ -110,7 +112,7 @@ export default function HangingLamp() {
         viewBox="0 0 120 260"
         role="switch"
         aria-checked={on}
-        aria-label={on ? 'Switch to dark mode' : 'Switch to light mode'}
+        aria-label={on ? t('lamp.toDark') : t('lamp.toLight')}
         tabIndex={0}
         onClick={onClick}
         onKeyDown={(e) => {

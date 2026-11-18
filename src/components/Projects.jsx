@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Reveal from './Reveal'
 import { projects } from '../data'
+import { useLanguage } from '../LanguageContext'
 
 function ArrowIcon() {
   return (
@@ -17,7 +18,7 @@ function ArrowIcon() {
   )
 }
 
-function ProjectModal({ project, onClose }) {
+function ProjectModal({ project, onClose, lang, t }) {
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === 'Escape') onClose()
@@ -51,7 +52,7 @@ function ProjectModal({ project, onClose }) {
         exit={{ opacity: 0, y: 24, scale: 0.97 }}
         transition={{ duration: 0.4, ease: [0.21, 0.65, 0.28, 0.99] }}
       >
-        <button className="modal__close" onClick={onClose} aria-label="Close detail">
+        <button className="modal__close" onClick={onClose} aria-label={t('projects.closeAria')}>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path
               d="m4 4 8 8M12 4l-8 8"
@@ -65,32 +66,28 @@ function ProjectModal({ project, onClose }) {
           <img src={project.image} alt={project.title} />
         </div>
         <div className="modal__body">
-          <p className="project__context">{project.context}</p>
+          <p className="project__context">{project.context[lang]}</p>
           <h3 className="modal__title">{project.title}</h3>
-          <p className="modal__desc">{project.description}</p>
+          <p className="modal__desc">{project.description[lang]}</p>
           <ul className="chips">
-            {project.tech.map((t) => (
-              <li className="chip" key={t}>
-                {t}
+            {project.tech.map((tech) => (
+              <li className="chip" key={tech}>
+                {tech}
               </li>
             ))}
           </ul>
           <div className="modal__actions">
-            {project.links.length > 0 ? (
-              project.links.map((l) => (
-                <a
-                  key={l.url}
-                  href={l.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn--primary"
-                >
-                  {l.label} <ArrowIcon />
-                </a>
-              ))
-            ) : (
-              <span className="pill pill--muted">{project.badge}</span>
-            )}
+            {project.links.map((l) => (
+              <a
+                key={l.url}
+                href={l.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn--primary"
+              >
+                {t(`links.${l.type}`)} <ArrowIcon />
+              </a>
+            ))}
           </div>
         </div>
       </motion.div>
@@ -100,13 +97,15 @@ function ProjectModal({ project, onClose }) {
 
 export default function Projects() {
   const [selected, setSelected] = useState(null)
+  const { lang, t } = useLanguage()
 
   return (
     <section className="section" id="projects">
       <Reveal>
-        <p className="section__eyebrow">03 — Projects</p>
+        <p className="section__eyebrow">{t('projects.eyebrow')}</p>
         <h2 className="section__title">
-          Selected <span className="grad-text">work</span>.
+          {t('projects.titlePre')} <span className="grad-text">{t('projects.titleEmph')}</span>
+          {t('projects.titlePost')}
         </h2>
       </Reveal>
 
@@ -142,33 +141,29 @@ export default function Projects() {
                 />
               </div>
               <div className="project__body">
-                <p className="project__context">{p.context}</p>
+                <p className="project__context">{p.context[lang]}</p>
                 <h3>{p.title}</h3>
-                <p className="project__desc">{p.description}</p>
+                <p className="project__desc">{p.description[lang]}</p>
                 <ul className="chips">
-                  {p.tech.map((t) => (
-                    <li className="chip" key={t}>
-                      {t}
+                  {p.tech.map((tech) => (
+                    <li className="chip" key={tech}>
+                      {tech}
                     </li>
                   ))}
                 </ul>
                 <div className="project__links">
-                  {p.links.length > 0 ? (
-                    p.links.map((l) => (
-                      <a
-                        key={l.url}
-                        href={l.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="project__link"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        {l.label} <ArrowIcon />
-                      </a>
-                    ))
-                  ) : (
-                    <span className="pill pill--muted">{p.badge}</span>
-                  )}
+                  {p.links.map((l) => (
+                    <a
+                      key={l.url}
+                      href={l.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="project__link"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      {t(`links.${l.type}`)} <ArrowIcon />
+                    </a>
+                  ))}
                 </div>
               </div>
             </article>
@@ -178,7 +173,7 @@ export default function Projects() {
 
       <AnimatePresence>
         {selected && (
-          <ProjectModal project={selected} onClose={() => setSelected(null)} />
+          <ProjectModal project={selected} onClose={() => setSelected(null)} lang={lang} t={t} />
         )}
       </AnimatePresence>
     </section>

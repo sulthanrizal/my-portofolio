@@ -1,15 +1,18 @@
 import Reveal from './Reveal'
 import { skills, marquee } from '../data'
+import { useLanguage } from '../LanguageContext'
 
 export default function Skills() {
   const strip = [...marquee, ...marquee]
+  const { t } = useLanguage()
 
   return (
     <section className="section" id="skills">
       <Reveal>
-        <p className="section__eyebrow">04 — Skills</p>
+        <p className="section__eyebrow">{t('skills.eyebrow')}</p>
         <h2 className="section__title">
-          My <span className="grad-text">toolbox</span>.
+          {t('skills.titlePre')} <span className="grad-text">{t('skills.titleEmph')}</span>
+          {t('skills.titlePost')}
         </h2>
       </Reveal>
 

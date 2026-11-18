@@ -1,0 +1,136 @@
+export const strings = {
+  en: {
+    nav: {
+      about: 'About',
+      experience: 'Experience',
+      projects: 'Projects',
+      skills: 'Skills',
+      contact: 'Contact',
+      github: 'GitHub',
+    },
+    hero: {
+      greetingPre: "Hi, I'm",
+      viewProjects: 'View Projects',
+      downloadCV: 'Download CV',
+      statWorkExp: 'Work experiences',
+      statProjectsShipped: 'Projects shipped',
+      scrollAria: 'Scroll to About',
+    },
+    about: {
+      eyebrow: '01 — About',
+      titlePre: 'Focused on',
+      titleEmph: 'user experience',
+      titlePost: ', obsessed with the details.',
+      extraParagraph:
+        "I've interned across three companies as a frontend and fullstack developer, shipped organizational websites used by real communities, and I'm always exploring what makes an interface feel effortless — from clean component architecture to the last easing curve.",
+      educationHeading: 'Education',
+    },
+    experience: {
+      eyebrow: '02 — Experience',
+      titlePre: "Where I've",
+      titleEmph: 'worked',
+      titlePost: '.',
+    },
+    projects: {
+      eyebrow: '03 — Projects',
+      titlePre: 'Selected',
+      titleEmph: 'work',
+      titlePost: '.',
+      closeAria: 'Close detail',
+    },
+    skills: {
+      eyebrow: '04 — Skills',
+      titlePre: 'My',
+      titleEmph: 'toolbox',
+      titlePost: '.',
+    },
+    footer: {
+      eyebrow: '05 — Contact',
+      titlePre: "Let's build something",
+      titleEmph: 'together',
+      titlePost: '.',
+      sub: 'Open for internship & freelance opportunities — or just say hi.',
+      downloadCV: 'Download CV',
+      builtWith: 'Built with React, Three.js & ☕',
+    },
+    links: {
+      live: 'Live Site',
+      github: 'GitHub',
+      appstore: 'App Store',
+    },
+    lamp: {
+      toDark: 'Switch to dark mode',
+      toLight: 'Switch to light mode',
+    },
+    langToggle: {
+      label: 'Switch language',
+    },
+  },
+  id: {
+    nav: {
+      about: 'Tentang',
+      experience: 'Pengalaman',
+      projects: 'Proyek',
+      skills: 'Skill',
+      contact: 'Kontak',
+      github: 'GitHub',
+    },
+    hero: {
+      greetingPre: 'Hai, saya',
+      viewProjects: 'Lihat Proyek',
+      downloadCV: 'Unduh CV',
+      statWorkExp: 'Pengalaman kerja',
+      statProjectsShipped: 'Proyek selesai',
+      scrollAria: 'Gulir ke bagian Tentang',
+    },
+    about: {
+      eyebrow: '01 — Tentang',
+      titlePre: 'Fokus pada',
+      titleEmph: 'pengalaman pengguna',
+      titlePost: ', terobsesi dengan detail.',
+      extraParagraph:
+        'Saya sudah magang di tiga perusahaan sebagai frontend dan fullstack developer, merilis website organisasi yang dipakai komunitas nyata, dan terus mengeksplorasi apa yang membuat sebuah interface terasa effortless — mulai dari arsitektur komponen yang bersih sampai easing curve terakhir.',
+      educationHeading: 'Pendidikan',
+    },
+    experience: {
+      eyebrow: '02 — Pengalaman',
+      titlePre: 'Tempat saya',
+      titleEmph: 'bekerja',
+      titlePost: '.',
+    },
+    projects: {
+      eyebrow: '03 — Proyek',
+      titlePre: 'Karya',
+      titleEmph: 'pilihan',
+      titlePost: '.',
+      closeAria: 'Tutup detail',
+    },
+    skills: {
+      eyebrow: '04 — Skill',
+      titlePre: 'Perkakas',
+      titleEmph: 'saya',
+      titlePost: '.',
+    },
+    footer: {
+      eyebrow: '05 — Kontak',
+      titlePre: 'Mari membangun sesuatu',
+      titleEmph: 'bersama',
+      titlePost: '.',
+      sub: 'Terbuka untuk kesempatan magang & freelance — atau sekadar menyapa.',
+      downloadCV: 'Unduh CV',
+      builtWith: 'Dibuat dengan React, Three.js & ☕',
+    },
+    links: {
+      live: 'Lihat Situs',
+      github: 'GitHub',
+      appstore: 'App Store',
+    },
+    lamp: {
+      toDark: 'Beralih ke mode gelap',
+      toLight: 'Beralih ke mode terang',
+    },
+    langToggle: {
+      label: 'Ganti bahasa',
+    },
+  },
+}

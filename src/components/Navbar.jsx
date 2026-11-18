@@ -1,17 +1,19 @@
 import { useEffect, useState } from 'react'
 import { profile } from '../data'
+import { useLanguage } from '../LanguageContext'
 import HangingLamp from './HangingLamp'
 
 const links = [
-  { label: 'About', href: '#about' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Contact', href: '#contact' },
+  { key: 'about', href: '#about' },
+  { key: 'experience', href: '#experience' },
+  { key: 'projects', href: '#projects' },
+  { key: 'skills', href: '#skills' },
+  { key: 'contact', href: '#contact' },
 ]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
+  const { lang, toggleLang, t } = useLanguage()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -29,11 +31,21 @@ export default function Navbar() {
         <ul className="nav__links">
           {links.map((l) => (
             <li key={l.href}>
-              <a href={l.href}>{l.label}</a>
+              <a href={l.href}>{t(`nav.${l.key}`)}</a>
             </li>
           ))}
         </ul>
         <div className="nav__actions">
+          <button
+            type="button"
+            className="btn btn--ghost nav__lang"
+            onClick={toggleLang}
+            aria-label={t('langToggle.label')}
+          >
+            <span className={lang === 'en' ? 'is-active' : ''}>EN</span>
+            <span className="nav__lang-sep">/</span>
+            <span className={lang === 'id' ? 'is-active' : ''}>ID</span>
+          </button>
           <a
             className="btn btn--ghost nav__cta"
             href={profile.github}
@@ -41,7 +53,7 @@ export default function Navbar() {
             rel="noopener noreferrer"
           >
             <GithubIcon />
-            GitHub
+            {t('nav.github')}
           </a>
         </div>
       </nav>

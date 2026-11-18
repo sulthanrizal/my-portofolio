@@ -212,6 +212,28 @@
   font-size: 13.5px;
 }
 
+.nav__lang {
+  padding: 9px 12px;
+  font-size: 12.5px;
+  font-family: var(--mono);
+  letter-spacing: 0.04em;
+  gap: 5px;
+}
+
+.nav__lang span {
+  color: var(--text-dim);
+  transition: color 0.2s ease;
+}
+
+.nav__lang span.is-active {
+  color: var(--head);
+  font-weight: 600;
+}
+
+.nav__lang-sep {
+  color: var(--border-bright);
+}
+
 @media (max-width: 760px) {
   .nav__links {
     display: none;
